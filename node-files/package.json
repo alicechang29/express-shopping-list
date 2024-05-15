@@ -1,0 +1,20 @@
+{
+  "name": "rithmschool-start-js-node",
+  "version": "1.0.0",
+  "homepage": "https://github.com/rithmschool/start/",
+  "main": "main.js",
+  "type": "module",
+  "scripts": {
+    "test": "vitest",
+    "test:cov": "vitest --coverage"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.16",
+    "@vitest/coverage-v8": "^1.6.0",
+    "supertest": "^7.0.0",
+    "vitest": "^1.6.0"
+  },
+  "dependencies": {
+    "morgan": "^1.10.0"
+  }
+}
