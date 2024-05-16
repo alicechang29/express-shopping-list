@@ -3,17 +3,20 @@ import { items } from "./fakeDb.js";
 
 /** Simple datastore for shopping items; only stores in memory. */
 
-//FIXME: instead can import a db file
 
 class Item {
 
-  static items = [
-    { name: "popsicle", price: 1.45 },
-    { name: "cheerios", price: 3.40 }
-  ];
+  //adding a new item to my list of items in fakeDB file
+  constructor(name, price) {
+    this.name = name;
+    this.price = price;
+
+    items.push(this);
+  }
+
 
   static _get(name) {
-    for (let item of this.items) {
+    for (let item of items) {
       if (item.name === name) {
         return item;
       }
@@ -22,12 +25,12 @@ class Item {
   }
 
   static _getItemIndex(item) {
-    return this.items.indexOf(item);
+    return items.indexOf(item);
   }
 
   /** Returns list of all items. */
   static all() {
-    return this.items;
+    return items;
   }
 
   /** Find item by name; returns item or throws error. */
@@ -36,11 +39,6 @@ class Item {
     return Item._get(name);
   }
 
-  /** Add new item and return item. */
-  static add(item) {
-    this.items.push(item);
-    return item;
-  }
 
   /** Updates item and return item. */
   static update(item, itemName, itemPrice) {
@@ -56,7 +54,7 @@ class Item {
 
     const itemIndex = Item._getItemIndex(item);
 
-    this.items.splice(itemIndex, 1);
+    items.splice(itemIndex, 1);
 
     return true;
   }
@@ -64,5 +62,4 @@ class Item {
 
 }
 
-
-export { Item };
+export default Item;

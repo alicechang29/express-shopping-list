@@ -6,7 +6,7 @@ const app = express();
 
 app.use(morgan('dev'));
 
-import shoppingRoutes from "./shoppingRoutes.js";
+import items from "./routes/items.js";
 import { logger } from "./middleware.js";
 
 app.use(express.json());
@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(logger); // NOTE: Logger is an imported middleware function
 
 // apply prefix to every route
-app.use("/items", shoppingRoutes);
+app.use("/items", items);
 
 
 /** 404 handler: matches unmatched routes; raises NotFoundError. */

@@ -1,10 +1,11 @@
 /**Routes for shopping app */
 
 import express from "express";
-import { BadRequestError } from "./expressError.js";
+import { BadRequestError } from "../expressError.js";
 
 const router = new express.Router();
-import { Item } from "./models.js";
+import Item from "../item.js";
+
 
 /**GET /items
  * get list of items
@@ -29,9 +30,10 @@ router.post("", function (req, res) {
   if (req.body === undefined) {
     throw new BadRequestError();
   }
-  const newItem = { name: req.body.name, price: req.body.price };
+  // const newItem = { name: req.body.name, price: req.body.price };
+  // Item.add(newItem);
 
-  Item.add(newItem);
+  const newItem = new Item(req.body.name, req.body.price);
 
   return res.json({ added: newItem });
 });
